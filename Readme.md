@@ -1,8 +1,8 @@
-# Token-based Push Notifications Sample App
+# React Native Push Notification Sample App
 
-This Sample app will guide you to setup Push Notifications in your React Native application.
+CometChat Push Notification Sample App is a fully functional push notification app capable of one-on-one (private) and group messaging, and Calling. This sample app enables users to send and receive push notifications for text and multimedia messages like **images, videos, documents** and **Custom Messages**. Also, users can make push notifications for Audio and Video calls to other users or groups.
 
-![CometChat Pro React Native Push Notifications](images/cometchat-pro-react-native-push-notifications.png)
+<hr>
 
 ## Pre-requisite
 1. Login to the <a href="https://app.cometchat.io/" target="_blank">CometChat Dashboard</a>.
@@ -12,21 +12,49 @@ This Sample app will guide you to setup Push Notifications in your React Native 
 5. Go to the "Installed" tab in the same section and open the settings for this extension and Set the version to `V2`.
 6. Paste the `REST API Key` in the Settings.
 7. Go to <a href="https://console.firebase.google.com/" target="_blank">Firebase Console</a> and get the Server Key for your app. Paste the Server Key in the settings and click on save.
-7. Copy your app's `APP_ID`, `REGION` and `AUTH_KEY` from the Dashboard. These will be required in the next steps.
+8. Copy your app's `APP_ID`, `REGION` and `AUTH_KEY` from the Dashboard. These will be required in the next steps.
 
-## Usage
+## Run the Sample App in Android
 
-1. Clone this repository.
-2. Navigate to the `src/Resources` directory and replace `APP_ID`, `REGION` and `AUTH_KEY` with yours in `Constants.js` file.
-3. Go to <a href="https://console.firebase.google.com/" target="_blank">Firebase Console</a> and get your `google-services.json` and `GoogleService-Info.plist`.
-4. Place the `google-services.json` in android/app folder.
-5. For iOS `GoogleService-Info.plist` check the documentation <a href="https://rnfirebase.io/#3-ios-setup" target="_blank">here</a>.
-5. Run `npm install` in the project's root directory to install the dependencies.
-6. For Android execute `react-native run-android`
-7. For iOS execute `react-native run-ios`
+ To Run the sample push notifications app, do the following changes:
 
----
+   You can Obtain your  *google-services.json* from [Firebase Console](https://console.firebase.google.com/)
 
-## Documentation
+   - Open the project in Android Studio.
+   
+   - Add `google-services.json` in **app** directory
 
-<a href="https://prodocs.cometchat.com/docs/extensions-enhanced-push-notification" target="_blank">Token-based Push Notifications</a>
+   - Build and run the Sample App `react-native run-android`.
+
+## IOS Installation 
+  
+  To Run the sample push notifications app, do the following changes:
+  
+  For FCM you can obtain your  *GoogleServices.plist* from [Firebase Console](https://console.firebase.google.com/)
+  
+  - Open the project in Xcode and navigate to select your push notification configuration:
+      - APNS + Callkit (Recommended)
+      - Firebase
+        
+  - Create certificates for your bundle ID as mentioned in our [documentation](https://prodocs.cometchat.com/docs/ios-extensions-enhanced-push-notification).
+    
+  - Build and run the Sample App `react-native run-ios`.
+  
+## Note
+   CometChat provides two ways to implement push notifications for your IOS app. 
+      - [Firebase](https://prodocs.cometchat.com/docs/ios-extensions-enhanced-push-notification)
+      - [APNS (Supports Callkit)](https://prodocs.cometchat.com/docs/ios-extensions-enhanced-push-notification-apns)
+      - 
+   You can Obtain your  *APP_ID* and *API_KEY* from [CometChat-Pro Dashboard](https://app.cometchat.com/)
+
+   You can Obtain your  *google-services.json* from [Firebase Console](https://console.firebase.google.com/)
+
+   You can Obtain your  *GoogleServices.plist* from [Firebase Console](https://console.firebase.google.com/)
+
+   
+      
+## 📝 Documentation
+
+CometChat provides to implement push notifications for your app.
+
+ 1. [React-Native](https://prodocs.cometchat.com/docs/react-native-extensions-enhanced-push-notification)

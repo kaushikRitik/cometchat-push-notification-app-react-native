@@ -1,3 +1,8 @@
+<p align="center">
+  <img alt="CometChat" src="https://assets.cometchat.io/website/images/logos/banner.png">
+</p>
+
+
 # React Native Push Notification Sample App
 
 CometChat Push Notification Sample App is a fully functional push notification app capable of one-on-one (private) and group messaging, and Calling. This sample app enables users to send and receive push notifications for text and multimedia messages like **images, videos, documents** and **Custom Messages**. Also, users can make push notifications for Audio and Video calls to other users or groups.
@@ -41,20 +46,10 @@ CometChat Push Notification Sample App is a fully functional push notification a
   - Build and run the Sample App `react-native run-ios`.
   
 ## Note
-   CometChat provides two ways to implement push notifications for your IOS app. 
+   - CometChat provides two ways to implement push notifications for your IOS app. 
       - [Firebase](https://prodocs.cometchat.com/docs/ios-extensions-enhanced-push-notification)
       - [APNS (Supports Callkit)](https://prodocs.cometchat.com/docs/ios-extensions-enhanced-push-notification-apns)
-      - 
-   You can Obtain your  *APP_ID* and *API_KEY* from [CometChat-Pro Dashboard](https://app.cometchat.com/)
-
-   You can Obtain your  *google-services.json* from [Firebase Console](https://console.firebase.google.com/)
-
-   You can Obtain your  *GoogleServices.plist* from [Firebase Console](https://console.firebase.google.com/)
-
-   
       
-## 📝 Documentation
+## Help and Support
+For issues running the project or integrating with our UI Kits, consult our [documentation](https://www.cometchat.com/docs/extensions/react-native-push-notifications) or create a [support ticket](https://help.cometchat.com/hc/en-us) or seek real-time support via the [CometChat Dashboard](https://app.cometchat.com/).
 
-CometChat provides to implement push notifications for your app.
-
- 1. [React-Native](https://prodocs.cometchat.com/docs/react-native-extensions-enhanced-push-notification)

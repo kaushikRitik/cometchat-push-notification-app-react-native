@@ -1,4 +1,4 @@
-import { CometChat } from "@cometchat/chat-sdk-react-native";
+import { CometChat, CometChatNotifications } from "@cometchat/chat-sdk-react-native";
 import { Platform } from "react-native";
 import messaging from "@react-native-firebase/messaging";
 import VoipPushNotification from "react-native-voip-push-notification";
@@ -60,7 +60,9 @@ export class TokenRegisterHandler {
           TokenRegisterHandler.registerTokenToCometChat();
         } else {
           if (!messaging().isDeviceRegisteredForRemoteMessages)
-            await messaging().registerDeviceForRemoteMessages();
+            await messaging().registerDeviceForRemoteMessages().then(async (res)=>{
+              let APNSToken = await messaging().getAPNSToken();
+          });
           if (TokenRegisterHandler.isUsingAPNS) {
             VoipPushNotification.registerVoipToken();
 
@@ -87,29 +89,36 @@ export class TokenRegisterHandler {
     try {
       if (Platform.OS == "android") {
         if (TokenRegisterHandler.FCMToken) {
-          let response = await CometChat.registerTokenForPushNotification(
-            TokenRegisterHandler.FCMToken
+          let response = await CometChatNotifications.registerPushToken(
+            TokenRegisterHandler.FCMToken,
+            CometChatNotifications.PushPlatforms.FCM_REACT_NATIVE_ANDROID,
+            'fcm-provider-1'
           );
         }
       } else {
         if (TokenRegisterHandler.FCMToken) {
-          let response = await CometChat.registerTokenForPushNotification(
-            TokenRegisterHandler.FCMToken
+          
+          let response = await CometChatNotifications.registerPushToken(
+            TokenRegisterHandler.FCMToken,
+            CometChatNotifications.PushPlatforms.FCM_REACT_NATIVE_IOS,
+            'fcm-provider-1'
           );
         }
         if (TokenRegisterHandler.isUsingAPNS) {
           if (TokenRegisterHandler.VOIPToken) {
-            let response = await CometChat.registerTokenForPushNotification(
+            let response = await CometChatNotifications.registerPushToken(
               TokenRegisterHandler.VOIPToken,
-              { voip: true }
+              CometChatNotifications.PushPlatforms.APNS_REACT_NATIVE_VOIP,
+              'apns-provider-1'
             );
-          }
+        }
           if (TokenRegisterHandler.APNSToken) {
-            let response = await CometChat.registerTokenForPushNotification(
+            let response = await CometChatNotifications.registerPushToken(
               TokenRegisterHandler.APNSToken,
-              { voip: false }
+              CometChatNotifications.PushPlatforms.APNS_REACT_NATIVE_DEVICE,
+              'apns-provider-1'
             );
-          }
+        }
         }
       }
     } catch (error) {}

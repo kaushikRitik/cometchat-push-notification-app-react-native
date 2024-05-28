@@ -94,6 +94,7 @@ export class TokenRegisterHandler {
             CometChatNotifications.PushPlatforms.FCM_REACT_NATIVE_ANDROID,
             'fcm-provider-1'
           );
+          console.log('TokenRegisterHandler.FCMToken',TokenRegisterHandler.FCMToken, response);
         }
       } else {
         if (TokenRegisterHandler.FCMToken) {
@@ -111,6 +112,7 @@ export class TokenRegisterHandler {
               CometChatNotifications.PushPlatforms.APNS_REACT_NATIVE_VOIP,
               'apns-provider-1'
             );
+            console.log('TokenRegisterHandler.VOIPToken',TokenRegisterHandler.VOIPToken, response);
         }
           if (TokenRegisterHandler.APNSToken) {
             let response = await CometChatNotifications.registerPushToken(
@@ -118,6 +120,7 @@ export class TokenRegisterHandler {
               CometChatNotifications.PushPlatforms.APNS_REACT_NATIVE_DEVICE,
               'apns-provider-1'
             );
+            console.log('TokenRegisterHandler.APNSToken',TokenRegisterHandler.APNSToken, response);
         }
         }
       }

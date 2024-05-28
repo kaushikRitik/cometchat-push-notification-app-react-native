@@ -22,9 +22,6 @@ CometChatUIKit.init({
   appId: COMETCHAT_CONSTANTS.APP_ID,
   authKey: COMETCHAT_CONSTANTS.AUTH_KEY,
   region: COMETCHAT_CONSTANTS.REGION,
-  overrideAdminHost: `${COMETCHAT_CONSTANTS.APP_ID}.api-${COMETCHAT_CONSTANTS.REGION}.cometchat-staging.com/v3`,
-  overrideClientHost: `${COMETCHAT_CONSTANTS.APP_ID}.apiclient-${COMETCHAT_CONSTANTS.REGION}.cometchat-staging.com/v3`,
- 
 })
   .then(() => {
     if (CometChat.setSource) {

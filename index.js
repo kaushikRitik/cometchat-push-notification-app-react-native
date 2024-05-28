@@ -47,7 +47,7 @@ handleMessages = (firebaseMessage, inbackground = false) => {
   try {
     let msg = firebaseMessage.data
 
-    if (msg.type == 'chat' && inbackground || messageIds.filter(item => item === msg.tag).length) {
+    if (((msg.type == 'chat' && inbackground) || messageIds.filter(item => item === msg.tag).length)) {
       NotificationHandler.displayNotification({
         id: msg.tag,
         title: msg.title, 

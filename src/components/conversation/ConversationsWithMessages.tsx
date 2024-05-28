@@ -1,11 +1,34 @@
 import React, { useEffect, useState } from "react";
-import { CometChatConversationsWithMessages } from "@cometchat/chat-uikit-react-native";
-import { CometChat } from "@cometchat/chat-sdk-react-native";
+import { CometChatConversationsWithMessages, CometChatUIKit } from "@cometchat/chat-uikit-react-native";
+import { CometChat, CometChatNotifications } from "@cometchat/chat-sdk-react-native";
+import { LogOut } from "../../resources";
+import { SCREENS_CONSTANTS } from "../../CONSTS";
 
-const ConversationsWithMessages = ({ route }: any) => {
+const ConversationsWithMessages = ({ navigation, route }: any) => {
   const [user, setUser] = useState<any>();
   const [group, setGroup] = useState<any>();
   const { params } = route;
+  console.log('ConversationsWithMessages params - ',JSON.stringify(params))
+  const conversationsConfiguration = {
+    showBackButton: true,
+    backButtonIcon: LogOut,
+    onBack: () => {
+      CometChatNotifications.unregisterPushToken().then(res=>{
+        console.log('unregisterPushToken', res);
+      })
+      CometChatUIKit.logout()
+      setTimeout(() => {
+        navigation.reset({
+          index: 0,
+          routes: [
+            {
+              name: SCREENS_CONSTANTS.LOGIN,
+            },
+          ],
+        })
+      }, 1000)
+    },
+  }
   useEffect(() => {
     if (params && params.receiverType === "user" && params.senderUid) {
       CometChat.getUser(params.senderUid).then((user) => {
@@ -30,6 +53,7 @@ const ConversationsWithMessages = ({ route }: any) => {
               .setLimit(20),
           },
         }}
+        conversationsConfiguration={conversationsConfiguration}
       />
     );
   if (group)
@@ -43,9 +67,14 @@ const ConversationsWithMessages = ({ route }: any) => {
               .setLimit(20),
           },
         }}
+        conversationsConfiguration={conversationsConfiguration}
       />
     );
-  return <CometChatConversationsWithMessages />;
+    return (
+      <CometChatConversationsWithMessages
+        conversationsConfiguration={conversationsConfiguration}
+      />
+    );
 };
 
 export default ConversationsWithMessages;

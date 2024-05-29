@@ -2,6 +2,7 @@ import { CometChat, CometChatNotifications } from "@cometchat/chat-sdk-react-nat
 import { Platform } from "react-native";
 import messaging from "@react-native-firebase/messaging";
 import VoipPushNotification from "react-native-voip-push-notification";
+import { COMETCHAT_CONSTANTS } from "../src/CONSTS";
 export class TokenRegisterHandler {
   static FCMToken: string;
   static VOIPToken: string;
@@ -92,7 +93,7 @@ export class TokenRegisterHandler {
           let response = await CometChatNotifications.registerPushToken(
             TokenRegisterHandler.FCMToken,
             CometChatNotifications.PushPlatforms.FCM_REACT_NATIVE_ANDROID,
-            'fcm-provider-1'
+            COMETCHAT_CONSTANTS.FCM_PROVIDER_ID
           );
           console.log('TokenRegisterHandler.FCMToken',TokenRegisterHandler.FCMToken, response);
         }
@@ -102,7 +103,7 @@ export class TokenRegisterHandler {
           let response = await CometChatNotifications.registerPushToken(
             TokenRegisterHandler.FCMToken,
             CometChatNotifications.PushPlatforms.FCM_REACT_NATIVE_IOS,
-            'fcm-provider-1'
+            COMETCHAT_CONSTANTS.FCM_PROVIDER_ID
           );
         }
         if (TokenRegisterHandler.isUsingAPNS) {
@@ -110,15 +111,15 @@ export class TokenRegisterHandler {
             let response = await CometChatNotifications.registerPushToken(
               TokenRegisterHandler.VOIPToken,
               CometChatNotifications.PushPlatforms.APNS_REACT_NATIVE_VOIP,
-              'apns-provider-1'
-            );
+              COMETCHAT_CONSTANTS.APNS_PROVIDER_ID
+          );
             console.log('TokenRegisterHandler.VOIPToken',TokenRegisterHandler.VOIPToken, response);
         }
           if (TokenRegisterHandler.APNSToken) {
             let response = await CometChatNotifications.registerPushToken(
               TokenRegisterHandler.APNSToken,
               CometChatNotifications.PushPlatforms.APNS_REACT_NATIVE_DEVICE,
-              'apns-provider-1'
+              COMETCHAT_CONSTANTS.APNS_PROVIDER_ID
             );
             console.log('TokenRegisterHandler.APNSToken',TokenRegisterHandler.APNSToken, response);
         }
